@@ -29,7 +29,10 @@ let package = Package(
         .target(
             name: "Factory",
             dependencies: [],
-            resources: [.copy("PrivacyInfo.xcprivacy")]
+            resources: [.copy("PrivacyInfo.xcprivacy")],
+            swiftSettings: [
+                .unsafeFlags(["-Xfrontend", "-no-verify-emitted-module-interface"])
+            ]
         ),
         .testTarget(
             name: "FactoryTests",
