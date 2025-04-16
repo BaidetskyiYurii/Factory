@@ -31,7 +31,8 @@ let package = Package(
             dependencies: [],
             resources: [.copy("PrivacyInfo.xcprivacy")],
             swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-no-verify-emitted-module-interface"])
+                .unsafeFlags(["-Xfrontend", "-no-verify-emitted-module-interface"], .when(configuration: .release)),
+                .unsafeFlags(["-Xfrontend", "-no-verify-emitted-module-interface"], .when(platforms: [.iOS, .macOS, .tvOS, .watchOS]))
             ]
         ),
         .testTarget(
